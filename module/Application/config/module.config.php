@@ -10,7 +10,7 @@
 return array(
     'router' => array(
         'routes' => array(
-            'home' => array(
+            'home' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
                     'route'    => '/',
@@ -19,7 +19,17 @@ return array(
                         'action'     => 'index',
                     ),
                 ),
-            ),
+            ],
+            'register' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/register',
+                    'defaults' => [
+                        'controller'    => 'Application\Controller\Register',
+                        'action'        => 'register'
+                    ]
+                ]
+            ],
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -73,7 +83,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index'      => 'Application\Controller\IndexController',
+            'Application\Controller\Register'   => 'Application\Controller\RegisterController'
         ),
     ),
     'view_manager' => array(
